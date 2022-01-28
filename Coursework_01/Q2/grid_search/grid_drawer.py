@@ -5,11 +5,11 @@ class GridDrawer(object):
     def __init__(self, grid, maximum_grid_drawer_window_height_in_pixels, top_left_in_pixels = None):
         
         self._grid = grid
-        width = grid.width();
-        height = grid.height();
+        width = grid.width()
+        height = grid.height()
 
         # Make sure that the height of the window is less than the specified maximum
-        self._cell_size = max(20, maximum_grid_drawer_window_height_in_pixels / height)
+        self._cell_size = max(10, maximum_grid_drawer_window_height_in_pixels / height)
 
         # Create the window
         pixel_width =  width * self._cell_size

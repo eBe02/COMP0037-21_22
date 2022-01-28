@@ -32,7 +32,7 @@ class PlannerBase(object):
 
     # Construct a new planner object and set defaults.
     def __init__(self, environment_map):
-        self._environment_map = environment_map;
+        self._environment_map = environment_map
         self.search_grid = None
 
         # All these variables are used for controlling the graphics output

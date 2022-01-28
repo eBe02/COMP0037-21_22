@@ -23,8 +23,8 @@ class SearchGridDrawer(GridDrawer):
     def update(self):
 
         ### Figure out the width and height
-        width = self._grid.width();
-        height = self._grid.height();
+        width = self._grid.width()
+        height = self._grid.height()
 
         for i in range(width):
             for j in range(height):
@@ -46,7 +46,7 @@ class SearchGridDrawer(GridDrawer):
                     color = 'black'
                 else:
                     color = 'white'
-                self._rectangles[j][i].setFill(color);
+                self._rectangles[j][i].setFill(color)
                 
                 # Now handle drawing the parent arrow if required
                 if (self._draw_parent_arrows is False):
