@@ -1,8 +1,8 @@
-'''
+"""
 Created on 13 Jan 2022
 
 @author: ucacsjj
-'''
+"""
 
 import math
 import numpy as np
@@ -16,9 +16,9 @@ from .agent import Agent
 # step-by-step change in its behaviour.
 
 class TryThemAllAgent(Agent):
-    '''
+    """
     classdocs
-    '''
+    """
 
 
     def __init__(self, environment, number_of_pulls):

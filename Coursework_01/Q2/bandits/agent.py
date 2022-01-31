@@ -1,20 +1,19 @@
-'''
+"""
 Created on 13 Jan 2022
 
 @author: ucacsjj
-'''
+"""
 
 import math
 
 import numpy as np
 
+
 # The agent is our octopus which can pull the different arms on the bandits
-
 class Agent(object):
-    '''
+    """
     classdocs
-    '''
-
+    """
 
     def __init__(self, environment):
         # Store the environment and common information
@@ -69,10 +68,11 @@ class Agent(object):
         return self.total_number_of_pulls
         
     def _choose_action(self):
-        '''Pick which bandit to pull next'''
+        """
+        Pick which bandit to pull next
+        """
         raise NotImplementedError
 
-        
     # Pull all the arms a pre-specified number of times
     def _pull_all_arms(self):
     
@@ -84,9 +84,3 @@ class Agent(object):
                 
             self.number_of_pulls[b] += self.initial_number_of_arm_pulls
             self.total_number_of_pulls += self.initial_number_of_arm_pulls
-
-
-            
-    
-    
-    

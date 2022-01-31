@@ -1,25 +1,24 @@
-'''
+"""
 Created on 13 Jan 2022
 
 @author: ucacsjj
-'''
+"""
 
 import math
 import numpy as np
 
 from .agent import Agent
 
+
 # This agent implements the try-them-all strategy which goes through and
 # pulls each arm in turn. Some of this code looks a bit redundant (the
 # agent base class does a sweep itself). However, this has been written this
 # way to show a bit more how the agent contains its own state and does
 # step-by-step change in its behaviour.
-
 class TryThemAllAgent(Agent):
-    '''
+    """
     classdocs
-    '''
-
+    """
 
     def __init__(self, environment, number_of_pulls):
         self._number_of_pulls = number_of_pulls

@@ -1,17 +1,17 @@
-'''
+"""
 Created on 12 Jan 2022
 
 @author: ucacsjj
-'''
+"""
 import math
 import numpy as np
 
 import gym
 from gym import spaces
 
+
 # This class implements an individual bandit. It is parameterized by a
 # mean and covariance. One or more samples can be drawn
-
 class Bandit:
 
     def __init__(self, mean, sigma):
@@ -29,8 +29,8 @@ class Bandit:
         reward = np.random.normal(self._mean, self._sigma)
         return reward
 
-# This class is a collection of our k bandits
 
+# This class is a collection of our k bandits
 class BanditEnvironment(gym.Env):
     
     def __init__(self, number_of_bandits):
@@ -47,8 +47,7 @@ class BanditEnvironment(gym.Env):
            
     def number_of_bandits(self):
         return len(self._bandits)
-        
-                
+
     def optimal_action(self):
         
         max_q = self._bandits[0].mean()

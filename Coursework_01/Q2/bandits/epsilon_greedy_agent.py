@@ -1,12 +1,13 @@
-'''
+"""
 Created on 14 Jan 2022
 
 @author: ucacsjj
-'''
+"""
 
 import numpy as np
 
 from .agent import Agent
+
 
 class EpsilonGreedyAgent(Agent):
     

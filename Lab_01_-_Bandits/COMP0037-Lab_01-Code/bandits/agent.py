@@ -1,8 +1,8 @@
-'''
+"""
 Created on 13 Jan 2022
 
 @author: ucacsjj
-'''
+"""
 
 import math
 
@@ -11,9 +11,9 @@ import numpy as np
 # The agent is our octopus which can pull the different arms on the bandits
 
 class Agent(object):
-    '''
+    """
     classdocs
-    '''
+    """
 
 
     def __init__(self, environment):
@@ -69,7 +69,7 @@ class Agent(object):
         return self.total_number_of_pulls
         
     def _choose_action(self):
-        '''Pick which bandit to pull next'''
+        """Pick which bandit to pull next"""
         raise NotImplementedError
 
         

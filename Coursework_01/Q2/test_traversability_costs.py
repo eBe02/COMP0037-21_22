@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 
-'''
+"""
 Created on 26 Jan 2022
 
 @author: ucacsjj
-'''
+"""
 
 from airport.scenarios import test_traversability_costs_scenario
 from airport.airport_map_drawer import AirportMapDrawer

@@ -1,10 +1,9 @@
 from .planner_base import PlannerBase
 
+
 class DepthFirstPlanner(PlannerBase):
 
     # This implements a simple LIFO search algorithm
-    
-    #
     
     def __init__(self, occupancyGrid):
         PlannerBase.__init__(self, occupancyGrid)

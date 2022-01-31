@@ -1,13 +1,13 @@
-'''
+"""
 Created on 14 Jan 2022
 
 @author: ucacsjj
-'''
+"""
 
 from .agent import Agent
 
-# This agent is really simple - it picks a constant action through all time
 
+# This agent is really simple - it picks a constant action through all time
 class FixedActionAgent(Agent):
 
     # Construct the agent

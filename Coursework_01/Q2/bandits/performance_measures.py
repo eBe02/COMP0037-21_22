@@ -1,10 +1,11 @@
-'''
+"""
 Created on 14 Jan 2022
 
 @author: ucacsjj
-'''
+"""
 
 import numpy as np
+
 
 # Return an array which shows, over time the percentage of optimal actions taken.
 # The input is the action_history, which is a timestep-by-timestep list of actions
@@ -27,6 +28,7 @@ def compute_percentage_of_optimal_actions_selected(environment, action_history):
             correct_actions[a] = correct_actions[a-1] + (action_history[a] == optimal_action)
     
     return np.divide(correct_actions, np.arange(1, num_actions_taken + 1))
+
 
 # Q4b:
 # Compute the regret. For each timestep, compute the difference between the

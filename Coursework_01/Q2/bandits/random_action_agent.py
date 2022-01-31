@@ -1,13 +1,13 @@
-'''
+"""
 Created on 14 Jan 2022
 
 @author: ucacsjj
-'''
+"""
 
 from .agent import Agent
 
-# This agent randomly picks action
 
+# This agent randomly picks action
 class RandomActionAgent(Agent):
 
     # Construct the agent. Because we do nothing here,

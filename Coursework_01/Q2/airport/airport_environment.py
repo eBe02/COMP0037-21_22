@@ -1,8 +1,8 @@
-'''
+"""
 Created on 25 Jan 2022
 
 @author: ucacsjj
-'''
+"""
 
 from enum import Enum
 
@@ -17,6 +17,7 @@ from grid_search.dijkstra_planner import DijkstraPlanner
 from bandits.bandit import Bandit
 from .actions import ActionType
 
+
 class PlannerType(Enum):
     BREADTH_FIRST = 0
     DEPTH_FIRST = 1
@@ -25,30 +26,30 @@ class PlannerType(Enum):
 
 
 class AirportBatteryChargingEnvironment(gym.Env):
-    '''
+    """
     classdocs
-    '''
+    """
 
-    def __init__(self, airport_map, planner_type = PlannerType.DEPTH_FIRST):
-        '''
+    def __init__(self, airport_map, planner_type=PlannerType.DEPTH_FIRST):
+        """
         Constructor
-        '''
-        
+        """
+
         # Store the map
         self._airport_map = airport_map
-        
+
         # Create the planner which will be used to simulate the robot's travel
         planner_factory = {
-            PlannerType.BREADTH_FIRST : BreadthFirstPlanner(self._airport_map),
-            PlannerType.DEPTH_FIRST : DepthFirstPlanner(self._airport_map),
-            PlannerType.DIJKSTRA : DijkstraPlanner(self._airport_map),
-            PlannerType.A_STAR : AStarPlanner(self._airport_map),
-            }
+            PlannerType.BREADTH_FIRST: BreadthFirstPlanner(self._airport_map),
+            PlannerType.DEPTH_FIRST: DepthFirstPlanner(self._airport_map),
+            PlannerType.DIJKSTRA: DijkstraPlanner(self._airport_map),
+            PlannerType.A_STAR: AStarPlanner(self._airport_map),
+        }
         self._planner = planner_factory.get(planner_type)
 
         # Disable the graphics by default; this can be enabled again
         self._planner.show_graphics(False)
-        
+
         # Create the bandits which will be used for charging
         charging_stations = airport_map.all_charging_stations()
         self._charging_station_bandits = {}
@@ -56,21 +57,20 @@ class AirportBatteryChargingEnvironment(gym.Env):
             params = charging_stations[b].params()
             bandit = Bandit(params[0], params[1])
             self._charging_station_bandits[charging_stations[b].coords()] = bandit
-        
+
         self._current_coords = None
 
     def reset(self):
         self._current_coords = None
         return self._current_coords
-        
+
     def planner(self):
         return self._planner
-    
+
     def enable_verbose_graphics(self, verbose_graphics):
         self._planner.show_graphics(verbose_graphics)
-    
-        
-    def step(self, action):        
+
+    def step(self, action):
         # If the action is to teleport the robot to a new location,
         # do so instantly at no cost. If the robot  can't be 
         # transported to the new cell, return a reward of -infinity
@@ -82,7 +82,7 @@ class AirportBatteryChargingEnvironment(gym.Env):
             else:
                 self._current_coords = action[1]
                 return self._current_coords, 0, False, True
-        
+
         # If the action is to plan a path to the new goal, fire up
         # our planner and get the path. Here we only care about the path cost.
         # If the path can be reached we return the negative of the path cost
@@ -98,7 +98,7 @@ class AirportBatteryChargingEnvironment(gym.Env):
                 return self._current_coords, -plan.path_travel_cost, False, plan
             else:
                 return self._current_coords, -float("inf"), False, plan
-            
+
         # If the action is to recharge the robot, this action can only be carried out at
         # the charging station, otherwise the cost is infinitely negative. If the robot
         # is at a charging station, figure out which one it is, extract the bandit and
@@ -109,4 +109,3 @@ class AirportBatteryChargingEnvironment(gym.Env):
                 return self._current_coords, charging_station_bandit.pull_arm(), False, True
             else:
                 return self._current_coords, -float("inf"), False, False
- 

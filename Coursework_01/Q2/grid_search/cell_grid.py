@@ -5,12 +5,14 @@ from .grid import Grid
 # A cell grid consists of a set of cells ordered in a 2D array. The type of
 # cells depends on what's used
 
+
 class Cell:
     def __init__(self, coords):
         self._coords = coords
         
     def coords(self):
         return self._coords
+
 
 class CellGrid(Grid):
 
