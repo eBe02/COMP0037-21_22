@@ -767,7 +767,7 @@ class Text(GraphicsObject):
             raise GraphicsError(BAD_OPTION)
 
     def setSize(self, size):
-        if 5 < =  size < =  36:
+        if 5 <=size <=36:
             f,s,b = self.config['font']
             self._reconfig("font", (f,size,b))
         else:
@@ -858,7 +858,7 @@ class Entry(GraphicsObject):
             raise GraphicsError(BAD_OPTION)
 
     def setSize(self, size):
-        if 5 < =  size < =  36:
+        if 5 <=size <=36:
             self._setFontComponent(1,size)
         else:
             raise GraphicsError(BAD_OPTION)

@@ -138,8 +138,8 @@ class PlannerBase(object):
         cellCoords = cell.coords()
         newX = cellCoords[0] + offsetX
         newY = cellCoords[1] + offsetY
-        if ((newX > =  0) & (newX < self.occupancyGrid.width()) \
-            & (newY > =  0) & (newY < self.occupancyGrid.height())):
+        if ((newX >=0) & (newX < self.occupancyGrid.width()) \
+            & (newY >=0) & (newY < self.occupancyGrid.height())):
             newCoords = (newX, newY)
             newCell = self.searchGrid.cellFromCoords(newCoords)
             if newCell.isObstructed is False:

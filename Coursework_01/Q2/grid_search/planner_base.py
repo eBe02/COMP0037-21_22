@@ -132,8 +132,8 @@ class PlannerBase(object):
         cellCoords = cell.coords()
         newX = cellCoords[0] + offsetX
         newY = cellCoords[1] + offsetY
-        if ((newX > =  0) & (newX < self._environment_map.width()) \
-            & (newY > =  0) & (newY < self._environment_map.height())):
+        if ((newX >=0) & (newX < self._environment_map.width()) \
+            & (newY >=0) & (newY < self._environment_map.height())):
             newCoords = (newX, newY)
             newCell = self.search_grid.cell_from_coords(newCoords)
             if newCell.is_obstructed is False:
