@@ -18,7 +18,7 @@ if __name__ == '__main__':
     # Get the map
     airport_map = full_scenario()
     
-    charging_policy = ChargingPolicy(airport_map, set_random = True)
+    charging_policy = ChargingPolicy(airport_map, set_random=True)
     
     # Create the environment
     airport_environment = AirportBatteryChargingEnvironment(airport_map)

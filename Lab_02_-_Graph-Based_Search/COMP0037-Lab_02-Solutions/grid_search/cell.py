@@ -3,9 +3,9 @@ from enum import Enum
 # The label which can be assigned to this cell
 
 class CellLabel(Enum):
-    UNVISITED=0
-    DEAD=1
-    ALIVE=2
+    UNVISITED = 0
+    DEAD = 1
+    ALIVE = 2
 
 # This class stores information about each cell - its coordinates in the grid,
 # its label, and the path cost to reach it. It includes a few extra field which
@@ -23,24 +23,24 @@ class Cell(object):
 
         # Flag if the cell is obstructed
         if isOccupied > 0:
-            self.isObstructed = True
+            self.isObstructed=True
         else:
-            self.isObstructed = False
+            self.isObstructed=False
 
         # Initially the cell has no parents.
-        self.parent = None
+        self.parent=None
 
         # The initial path cost is infinite. For algorithms that need
         # it, this is the necessary initial condition.
         self.pathCost = float("inf")
         
         # Flags to show if the cell is at the start or the goal        
-        self.isStart = False
-        self.isGoal = False
+        self.isStart=False
+        self.isGoal=False
         
         # These variables are used for plotting
-        self.isOnPath = False
-        self.parentChanged = False
+        self.isOnPath=False
+        self.parentChanged=False
 
 
     def coords(self):
@@ -62,7 +62,7 @@ class Cell(object):
             return 
         
         self.parent = parent
-        self.parentChanged = True
+        self.parentChanged=True
         
     # Tie breaker; normally you'd make it random, but this is to 
     # give deterministic behaviour

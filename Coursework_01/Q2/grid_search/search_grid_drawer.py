@@ -6,7 +6,7 @@ from .grid_drawer import GridDrawer
 
 class SearchGridDrawer(GridDrawer):
 
-    def __init__(self, search_grid, maximum_grid_drawer_window_height_in_pixels, top_left_in_pixels = None, draw_parent_arrows = True):
+    def __init__(self, search_grid, maximum_grid_drawer_window_height_in_pixels, top_left_in_pixels=None, draw_parent_arrows=True):
 
         GridDrawer.__init__(self, search_grid, maximum_grid_drawer_window_height_in_pixels, top_left_in_pixels)
 
@@ -68,7 +68,7 @@ class SearchGridDrawer(GridDrawer):
                         parentArrow.undraw()
                         parentArrow.p2 = Point((parent_cell_coords[0] + 0.5)* self._cell_size, \
                                                (height - parent_cell_coords[1] - 0.5) * self._cell_size)
-                        cell.parent_changed = False
+                        cell.parent_changed=False
                         parentArrow.setOutline('red')
                         parentArrow.draw(self._win)
                         

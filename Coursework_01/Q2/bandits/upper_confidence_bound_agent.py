@@ -28,7 +28,7 @@ class UpperConfidenceBoundAgent(Agent):
         
         weighted_Q = Qt + Ct
         
-        best_action = np.where(weighted_Q == np.amax(weighted_Q))[0]        
+        best_action = np.where(weighted_Q == np.amax(weighted_Q))[0]
         action = best_action[0]
         
         return action

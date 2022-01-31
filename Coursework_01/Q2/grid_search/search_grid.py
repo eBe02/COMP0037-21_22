@@ -6,9 +6,9 @@ from .cell_grid import CellGrid
 # The label which can be assigned to this cell
 
 class SearchGridCellLabel(Enum):
-    UNVISITED=0
-    DEAD=1
-    ALIVE=2
+    UNVISITED = 0
+    DEAD = 1
+    ALIVE = 2
 
 # This class stores information about each cell - its coordinates in the grid,
 # its label, and the path cost to reach it. It includes a few extra field which
@@ -27,19 +27,19 @@ class SearchGridCell(Cell):
         self.is_obstructed = is_obstructed
          
         # Initially the cell has no parents.
-        self.parent = None
+        self.parent=None
 
         # The initial path cost is infinite. For algorithms that need
         # it, this is the necessary initial condition.
         self.path_cost = float("inf")
         
         # Flags to show if the cell is at the start or the goal        
-        self.is_start = False
-        self.is_goal = False
+        self.is_start=False
+        self.is_goal=False
         
         # These variables are used for plotting
-        self.is_on_path = False
-        self.parent_changed = False
+        self.is_on_path=False
+        self.parent_changed=False
 
 
     def coords(self):
@@ -61,7 +61,7 @@ class SearchGridCell(Cell):
             return 
         
         self.parent = parent
-        self.parent_changed = True
+        self.parent_changed=True
         
     # Tie breaker; normally you'd make it random, but this is to 
     # give deterministic behaviour

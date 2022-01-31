@@ -12,7 +12,7 @@ class ChargingPolicyDrawer(GridDrawer):
     classdocs
     """
 
-    def __init__(self, charging_policy, maximum_grid_drawer_window_height_in_pixels, top_left_in_pixels = None):
+    def __init__(self, charging_policy, maximum_grid_drawer_window_height_in_pixels, top_left_in_pixels=None):
 
         GridDrawer.__init__(self, charging_policy, maximum_grid_drawer_window_height_in_pixels, top_left_in_pixels)
   

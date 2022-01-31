@@ -5,7 +5,7 @@ from .cell import CellLabel
 
 class GridDrawer(object):
 
-    def __init__(self, searchGrid, maximumGridDrawerWindowHeightInPixels, drawParentArrows = True):
+    def __init__(self, searchGrid, maximumGridDrawerWindowHeightInPixels, drawParentArrows=True):
 
         self._searchGrid = searchGrid;
         self._drawParentArrows = drawParentArrows
@@ -17,7 +17,7 @@ class GridDrawer(object):
         self._cellSize = max(20, maximumGridDrawerWindowHeightInPixels / height)
 
         # Create the window
-        self._win = GraphWin("Graphics", width * self._cellSize , height * self._cellSize, autoflush = False)
+        self._win = GraphWin("Graphics", width * self._cellSize , height * self._cellSize, autoflush=False)
         
         # Allocate the cells
         self._rectangles = [[Rectangle(Point(i * self._cellSize, (height - j - 1) * self._cellSize), \
@@ -80,7 +80,7 @@ class GridDrawer(object):
                         parentArrow.undraw()
                         parentArrow.p2 = Point((parentCellCoords[0] + 0.5)* self._cellSize, \
                                                (height - parentCellCoords[1] - 0.5) * self._cellSize)
-                        cell.parentChanged = False
+                        cell.parentChanged=False
                         parentArrow.setOutline('red')
                         parentArrow.draw(self._win)
                         

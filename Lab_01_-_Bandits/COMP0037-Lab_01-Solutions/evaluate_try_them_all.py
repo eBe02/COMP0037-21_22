@@ -29,7 +29,7 @@ if __name__ == '__main__':
     
     number_of_tries = 5
     
-    agent = TryThemAllAgent(environment, number_of_tries)
+    agent=TryThemAllAgent(environment, number_of_tries)
     
     # Step-by-step store of rewards
     reward_history = np.zeros(number_of_steps)
@@ -39,7 +39,7 @@ if __name__ == '__main__':
     for p in range(0, number_of_steps):
         action_history[p], reward_history[p] = agent.step()
         
-    print(f'Mean reward={np.mean(reward_history)}')
+    print(f'Mean reward = {np.mean(reward_history)}')
     
     # Q4a:
     # Plot the % optimal actions

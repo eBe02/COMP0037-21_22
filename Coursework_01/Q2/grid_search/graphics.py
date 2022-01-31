@@ -209,29 +209,29 @@ class GraphWin(tk.Canvas):
 
     """A GraphWin is a toplevel window for displaying graphics."""
 
-    def __init__(self, title="Graphics Window",
-                 width=200, height=200, autoflush=True):
+    def __init__(self, title = "Graphics Window",
+                 width = 200, height = 200, autoflush=True):
         assert type(title) == type(""), "Title must be a string"
         master = tk.Toplevel(_root)
         master.protocol("WM_DELETE_WINDOW", self.close)
-        tk.Canvas.__init__(self, master, width=width, height=height,
-                           highlightthickness=0, bd=0)
+        tk.Canvas.__init__(self, master, width = width, height = height,
+                           highlightthickness = 0, bd = 0)
         self.master.title(title)
         self.pack()
         master.resizable(0,0)
         self.foreground = "black"
         self.items = []
-        self.mouseX = None
-        self.mouseY = None
+        self.mouseX=None
+        self.mouseY=None
         self.bind("<Button-1>", self._onClick)
         self.bind_all("<Key>", self._onKey)
         self.height = int(height)
         self.width = int(width)
         self.autoflush = autoflush
         self.do_full_update = sys.platform.startswith('win')
-        self._mouseCallback = None
-        self.trans = None
-        self.closed = False
+        self._mouseCallback=None
+        self.trans=None
+        self.closed=False
         master.lift()
         self.lastKey = ""
         if autoflush: _root.update()
@@ -257,20 +257,20 @@ class GraphWin(tk.Canvas):
     def setBackground(self, color):
         """Set background color of the window"""
         self.__checkOpen()
-        self.config(bg=color)
+        self.config(bg = color)
         self.__autoflush()
         
     def setCoords(self, x1, y1, x2, y2):
         """Set coordinates of window to run from (x1,y1) in the
         lower-left corner to (x2,y2) in the upper-right corner."""
-        self.trans = Transform(self.width, self.height, x1, y1, x2, y2)
+        self.trans=Transform(self.width, self.height, x1, y1, x2, y2)
         self.redraw()
 
     def close(self):
         """Close the window"""
 
         if self.closed: return
-        self.closed = True
+        self.closed=True
         self.master.destroy()
         self.__autoflush()
 
@@ -284,18 +284,18 @@ class GraphWin(tk.Canvas):
         if self.autoflush:
             _root.update()
     
-    def plot(self, x, y, color="black"):
+    def plot(self, x, y, color = "black"):
         """Set pixel (x,y) to the given color"""
         self.__checkOpen()
         xs,ys = self.toScreen(x,y)
-        self.create_line(xs,ys,xs+1,ys, fill=color)
+        self.create_line(xs,ys,xs+1,ys, fill = color)
         self.__autoflush()
         
-    def plotPixel(self, x, y, color="black"):
+    def plotPixel(self, x, y, color = "black"):
         """Set pixel raw (independent of window coordinates) pixel
         (x,y) to color"""
         self.__checkOpen()
-        self.create_line(x,y,x+1,y, fill=color)
+        self.create_line(x,y,x+1,y, fill = color)
         self.__autoflush()
       
     def flush(self):
@@ -310,15 +310,15 @@ class GraphWin(tk.Canvas):
         """Wait for mouse click and return Point object representing
         the click"""
         self.update()      # flush any prior clicks
-        self.mouseX = None
-        self.mouseY = None
+        self.mouseX=None
+        self.mouseY=None
         while self.mouseX == None or self.mouseY == None:
             self.update()
             if self.isClosed(): raise GraphicsError("getMouse in closed window")
             time.sleep(.1) # give up thread
         x,y = self.toWorld(self.mouseX, self.mouseY)
-        self.mouseX = None
-        self.mouseY = None
+        self.mouseX=None
+        self.mouseY=None
         return Point(x,y)
 
     def checkMouse(self):
@@ -329,8 +329,8 @@ class GraphWin(tk.Canvas):
         self.update()
         if self.mouseX != None and self.mouseY != None:
             x,y = self.toWorld(self.mouseX, self.mouseY)
-            self.mouseX = None
-            self.mouseY = None
+            self.mouseX=None
+            self.mouseY=None
             return Point(x,y)
         else:
             return None
@@ -452,8 +452,8 @@ class GraphicsObject:
         # When an object is drawn, canvas is set to the GraphWin(canvas)
         #    object where it is drawn and id is the TK identifier of the
         #    drawn shape.
-        self.canvas = None
-        self.id = None
+        self.canvas=None
+        self.id=None
 
         # config is the dictionary of configuration options for the widget.
         config = {}
@@ -500,8 +500,8 @@ class GraphicsObject:
             self.canvas.delItem(self)
             if self.canvas.autoflush:
                 _root.update()
-        self.canvas = None
-        self.id = None
+        self.canvas=None
+        self.id=None
 
     def move(self, dx, dy):
 
@@ -513,7 +513,7 @@ class GraphicsObject:
         if canvas and not canvas.isClosed():
             trans = canvas.trans
             if trans:
-                x = dx/ trans.xscale 
+                x = dx/ trans.xscale
                 y = -dy / trans.yscale
             else:
                 x = dx
@@ -575,7 +575,7 @@ class _BBox(GraphicsObject):
     # Internal base class for objects represented by bounding box
     # (opposite corners) Line segment is a degenerate case.
     
-    def __init__(self, p1, p2, options=["outline","width","fill"]):
+    def __init__(self, p1, p2, options = ["outline","width","fill"]):
         GraphicsObject.__init__(self, options)
         self.p1 = p1.clone()
         self.p2 = p2.clone()
@@ -740,7 +740,7 @@ class Text(GraphicsObject):
         self.anchor.move(dx,dy)
         
     def clone(self):
-        other = Text(self.anchor, self.config['text'])
+        other=Text(self.anchor, self.config['text'])
         other.config = self.config.copy()
         return other
 
@@ -761,7 +761,7 @@ class Text(GraphicsObject):
             raise GraphicsError(BAD_OPTION)
 
     def setSize(self, size):
-        if 5 <= size <= 36:
+        if 5 < =  size < =  36:
             f,s,b = self.config['font']
             self._reconfig("font", (f,size,b))
         else:
@@ -790,7 +790,7 @@ class Entry(GraphicsObject):
         self.fill = "gray"
         self.color = "black"
         self.font = DEFAULT_CONFIG['font']
-        self.entry = None
+        self.entry=None
 
     def __repr__(self):
         return "Entry({}, {})".format(self.anchor, self.width)
@@ -800,15 +800,15 @@ class Entry(GraphicsObject):
         x,y = canvas.toScreen(p.x,p.y)
         frm = tk.Frame(canvas.master)
         self.entry = tk.Entry(frm,
-                              width=self.width,
-                              textvariable=self.text,
+                              width = self.width,
+                              textvariable = self.text,
                               bg = self.fill,
                               fg = self.color,
-                              font=self.font)
+                              font = self.font)
         self.entry.pack()
         #self.setFill(self.fill)
         self.entry.focus_set()
-        return canvas.create_window(x,y,window=frm)
+        return canvas.create_window(x,y,window = frm)
 
     def getText(self):
         return self.text.get()
@@ -834,7 +834,7 @@ class Entry(GraphicsObject):
     def setFill(self, color):
         self.fill = color
         if self.entry:
-            self.entry.config(bg=color)
+            self.entry.config(bg = color)
 
             
     def _setFontComponent(self, which, value):
@@ -842,7 +842,7 @@ class Entry(GraphicsObject):
         font[which] = value
         self.font = tuple(font)
         if self.entry:
-            self.entry.config(font=self.font)
+            self.entry.config(font = self.font)
 
 
     def setFace(self, face):
@@ -852,7 +852,7 @@ class Entry(GraphicsObject):
             raise GraphicsError(BAD_OPTION)
 
     def setSize(self, size):
-        if 5 <= size <= 36:
+        if 5 < =  size < =  36:
             self._setFontComponent(1,size)
         else:
             raise GraphicsError(BAD_OPTION)
@@ -864,15 +864,15 @@ class Entry(GraphicsObject):
             raise GraphicsError(BAD_OPTION)
 
     def setTextColor(self, color):
-        self.color=color
+        self.color = color
         if self.entry:
-            self.entry.config(fg=color)
+            self.entry.config(fg = color)
 
 
 class Image(GraphicsObject):
 
     idCount = 0
-    imageCache = {} # tk photoimages go here to avoid GC while drawn 
+    imageCache = {} # tk photoimages go here to avoid GC while drawn
     
     def __init__(self, p, *pixmap):
         GraphicsObject.__init__(self, [])
@@ -880,10 +880,10 @@ class Image(GraphicsObject):
         self.imageId = Image.idCount
         Image.idCount = Image.idCount + 1
         if len(pixmap) == 1: # file name provided
-            self.img = tk.PhotoImage(file=pixmap[0], master=_root)
+            self.img = tk.PhotoImage(file = pixmap[0], master = _root)
         else: # width and height provided
             width, height = pixmap
-            self.img = tk.PhotoImage(master=_root, width=width, height=height)
+            self.img = tk.PhotoImage(master = _root, width = width, height = height)
 
     def __repr__(self):
         return "Image({}, {}, {})".format(self.anchor, self.getWidth(), self.getHeight())
@@ -891,8 +891,8 @@ class Image(GraphicsObject):
     def _draw(self, canvas, options):
         p = self.anchor
         x,y = canvas.toScreen(p.x,p.y)
-        self.imageCache[self.imageId] = self.img # save a reference  
-        return canvas.create_image(x,y,image=self.img)
+        self.imageCache[self.imageId] = self.img # save a reference
+        return canvas.create_image(x,y,image = self.img)
     
     def _move(self, dx, dy):
         self.anchor.move(dx,dy)
@@ -928,7 +928,7 @@ class Image(GraphicsObject):
 
         """
         
-        value = self.img.get(x,y) 
+        value = self.img.get(x,y)
         if type(value) ==  type(0):
             return [value, value, value]
         elif type(value) == type((0,0,0)):
@@ -951,7 +951,7 @@ class Image(GraphicsObject):
         
         path, name = os.path.split(filename)
         ext = name.split(".")[-1]
-        self.img.write( filename, format=ext)
+        self.img.write( filename, format = ext)
 
         
 def color_rgb(r,g,b):
@@ -962,7 +962,7 @@ def color_rgb(r,g,b):
 def test():
     win = GraphWin()
     win.setCoords(0,0,10,10)
-    t = Text(Point(5,5), "Centered Text")
+    t=Text(Point(5,5), "Centered Text")
     t.draw(win)
     p = Polygon(Point(1,1), Point(5,3), Point(2,7))
     p.draw(win)

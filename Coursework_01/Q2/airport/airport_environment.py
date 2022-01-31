@@ -30,7 +30,7 @@ class AirportBatteryChargingEnvironment(gym.Env):
     classdocs
     """
 
-    def __init__(self, airport_map, planner_type=PlannerType.DEPTH_FIRST):
+    def __init__(self, airport_map, planner_type = PlannerType.DEPTH_FIRST):
         """
         Constructor
         """
@@ -58,10 +58,10 @@ class AirportBatteryChargingEnvironment(gym.Env):
             bandit = Bandit(params[0], params[1])
             self._charging_station_bandits[charging_stations[b].coords()] = bandit
 
-        self._current_coords = None
+        self._current_coords=None
 
     def reset(self):
-        self._current_coords = None
+        self._current_coords=None
         return self._current_coords
 
     def planner(self):
@@ -92,7 +92,7 @@ class AirportBatteryChargingEnvironment(gym.Env):
             goal_coords = action[1]
             self._planner.plan(self._current_coords, goal_coords)
             plan = self._planner.extract_path_to_goal()
-            print(f'plan.path_travel_cost={plan.path_travel_cost}')
+            print(f'plan.path_travel_cost = {plan.path_travel_cost}')
             if plan.goal_reached is True:
                 self._current_coords = goal_coords
                 return self._current_coords, -plan.path_travel_cost, False, plan

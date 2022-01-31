@@ -39,7 +39,7 @@ if __name__ == '__main__':
     for p in range(0, number_of_steps):
         action_history[p], reward_history[p] = agent.step()
         
-    print(f'Mean reward={np.mean(reward_history)}')
+    print(f'Mean reward = {np.mean(reward_history)}')
     
     # Q4a:
     # Plot the % optimal actions

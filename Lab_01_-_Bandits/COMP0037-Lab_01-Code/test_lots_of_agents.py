@@ -30,7 +30,7 @@ if __name__ == '__main__':
     environment.set_bandit(3, Bandit(0, 1))
     
     # Create the agent
-    #agent = TryThemAllAgent(environment, 5)
+    #agent=TryThemAllAgent(environment, 5)
     
     #agent = EpsilonGreedyAgent(environment, 0.1)
     

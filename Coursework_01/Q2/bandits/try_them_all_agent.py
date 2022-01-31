@@ -31,10 +31,10 @@ class TryThemAllAgent(Agent):
         self._current_arm_count = 0
         
         # Shows when we finish pulling all arms
-        self._finished_sweeping_over_arms = False
+        self._finished_sweeping_over_arms=False
         
         # The best action
-        self._best_action = None
+        self._best_action=None
        
     def _choose_action(self):
         
@@ -60,13 +60,13 @@ class TryThemAllAgent(Agent):
             return self._current_arm
 
         # We have finished the sweep so stop doing it            
-        self._finished_sweeping_over_arms = True
+        self._finished_sweeping_over_arms=True
             
         # Work out the element with the highest weighted average
         average_q = np.divide(self.total_reward, self.number_of_pulls)
-        best_action = np.where(average_q == np.amax(average_q))[0]        
+        best_action = np.where(average_q == np.amax(average_q))[0]
         self._best_action = best_action[0]
-        print(f'Choosing best action={self._best_action}')
+        print(f'Choosing best action = {self._best_action}')
 
         return self._best_action
         

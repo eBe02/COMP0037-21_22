@@ -21,7 +21,7 @@ class EpsilonGreedyAgent(Agent):
             action = np.random.choice(self._number_of_bandits)
         else:
             average_q = np.divide(self.total_reward, self.number_of_pulls)
-            best_action = np.where(average_q == np.amax(average_q))[0]        
+            best_action = np.where(average_q == np.amax(average_q))[0]
             action = best_action[0]
             
         return action

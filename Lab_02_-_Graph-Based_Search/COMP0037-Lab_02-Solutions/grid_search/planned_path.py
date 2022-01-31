@@ -8,7 +8,7 @@ class PlannedPath(object):
     def __init__(self):
 
         # Does the path actually reach the goal or not?
-        self.goalReached = False
+        self.goalReached=False
         
         # The list of waypoint cells, from start to finish, which make
         # up the path.

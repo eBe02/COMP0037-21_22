@@ -33,17 +33,17 @@ class PlannerBase(object):
     # Construct a new planner object and set defaults.
     def __init__(self, environment_map):
         self._environment_map = environment_map
-        self.search_grid = None
+        self.search_grid=None
 
         # All these variables are used for controlling the graphics output
         self.pause_time_in_seconds = 0.05
         self.path_pause_time_in_seconds = 0.05
-        self._show_graphics = True
-        self._show_graphics_each_iteration = False
-        self.goal_reached = None
-        self.grid_drawer = None
+        self._show_graphics=True
+        self._show_graphics_each_iteration=False
+        self.goal_reached=None
+        self.grid_drawer=None
         self.maximum_grid_drawer_window_height_in_pixels = 800
-        self.draw_parent_arrows = True
+        self.draw_parent_arrows=True
 
     # This method pushes a cell onto the queue Q. Its implementation
     # depends upon the type of search algorithm used. If necessary,
@@ -132,8 +132,8 @@ class PlannerBase(object):
         cellCoords = cell.coords()
         newX = cellCoords[0] + offsetX
         newY = cellCoords[1] + offsetY
-        if ((newX >= 0) & (newX < self._environment_map.width()) \
-            & (newY >= 0) & (newY < self._environment_map.height())):
+        if ((newX > =  0) & (newX < self._environment_map.width()) \
+            & (newY > =  0) & (newY < self._environment_map.height())):
             newCoords = (newX, newY)
             newCell = self.search_grid.cell_from_coords(newCoords)
             if newCell.is_obstructed is False:
@@ -176,12 +176,12 @@ class PlannerBase(object):
         # Get the start cell object and label it as such. Also set its
         # path cost to 0.
         self.start = self.search_grid.cell_from_coords(start_coords)
-        self.start.is_start = True
+        self.start.is_start=True
         self.start.path_cost = 0
 
         # Get the goal cell object and label it.
         self.goal = self.search_grid.cell_from_coords(goal_coords)
-        self.goal.is_goal = True
+        self.goal.is_goal=True
 
         # If required, set up the grid drawer and show the initial state
         if (self._show_graphics == True):
@@ -200,14 +200,14 @@ class PlannerBase(object):
         self.number_of_cells_visited = 0
 
         # Indicates if we reached the goal or not
-        self.goal_reached = False
+        self.goal_reached=False
         
         # Iterate until we have run out of live cells to try or we reached the goal
         # This corresponds to lines 3-15 of the pseudocode
         while (self.is_queue_empty() == False):
             cell = self.pop_cell_from_queue()
             if (self.has_goal_been_reached(cell) == True):
-                self.goal_reached = True
+                self.goal_reached=True
                 break
             cells = self.next_cells_to_be_visited(cell)
             for nextCell in cells:
@@ -262,7 +262,7 @@ class PlannerBase(object):
             path.waypoints.appendleft(cell)
                        
             if (cell.is_start is False) and (cell.is_goal is False):
-                cell.is_on_path = True
+                cell.is_on_path=True
 
             if (self._show_graphics == True):
                 self.grid_drawer.update()

@@ -32,17 +32,17 @@ class PlannerBase(object):
     # Construct a new planner object and set defaults.
     def __init__(self, occupancyGrid):
         self.occupancyGrid = occupancyGrid;
-        self.searchGrid = None
+        self.searchGrid=None
 
         # All these variables are used for controlling the graphics output
         self.pauseTimeInSeconds = 0.05
         self.pathPauseTimeInSeconds = 0.05
-        self.showGraphics = True
-        self.showGraphicsEachIteration = False
-        self.goalReached = None
-        self.gridDrawer = None
+        self.showGraphics=True
+        self.showGraphicsEachIteration=False
+        self.goalReached=None
+        self.gridDrawer=None
         self.maximumGridDrawerWindowHeightInPixels = 800
-        self.drawParentArrows = True
+        self.drawParentArrows=True
 
     # This method pushes a cell onto the queue Q. Its implementation
     # depends upon the type of search algorithm used. If necessary,
@@ -132,8 +132,8 @@ class PlannerBase(object):
         cellCoords = cell.coords()
         newX = cellCoords[0] + offsetX
         newY = cellCoords[1] + offsetY
-        if ((newX >= 0) & (newX < self.occupancyGrid.width()) \
-            & (newY >= 0) & (newY < self.occupancyGrid.height())):
+        if ((newX > =  0) & (newX < self.occupancyGrid.width()) \
+            & (newY > =  0) & (newY < self.occupancyGrid.height())):
             newCoords = (newX, newY)
             newCell = self.searchGrid.cellFromCoords(newCoords)
             if newCell.isObstructed is False:
@@ -176,12 +176,12 @@ class PlannerBase(object):
         # Get the start cell object and label it as such. Also set its
         # path cost to 0.
         self.start = self.searchGrid.cellFromCoords(startCoords)
-        self.start.isStart = True
+        self.start.isStart=True
         self.start.pathCost = 0
 
         # Get the goal cell object and label it.
         self.goal = self.searchGrid.cellFromCoords(goalCoords)
-        self.goal.isGoal = True
+        self.goal.isGoal=True
 
         # If required, set up the grid drawer and show the initial state
         if (self.showGraphics == True):
@@ -198,14 +198,14 @@ class PlannerBase(object):
         self.numberOfCellsVisited = 0
 
         # Indicates if we reached the goal or not
-        self.goalReached = False
+        self.goalReached=False
         
         # Iterate until we have run out of live cells to try or we reached the goal
         # This corresponds to lines 3-15 of the pseudocode
         while (self.isQueueEmpty() == False):
             cell = self.popCellFromQueue()
             if (self.hasGoalBeenReached(cell) == True):
-                self.goalReached = True
+                self.goalReached=True
                 break
             cells = self.nextCellsToBeVisited(cell)
             for nextCell in cells:
@@ -255,7 +255,7 @@ class PlannerBase(object):
         # Complete the implementation of the code to extract the full path.
 
         # Q2c:
-        # Extend this code to write the number of waypoints (=cells) on the
+        # Extend this code to write the number of waypoints ( = cells) on the
         # path together with the total cost (sum of L stage additive costs)
         # to the path.
         

@@ -14,7 +14,7 @@ def compute_percentage_of_optimal_actions_selected(environment, action_history):
     
     # Get the optimal action from the agent
     optimal_action, optimal_reward = environment.optimal_action()
-    print(f'optimal_action={optimal_action}')
+    print(f'optimal_action = {optimal_action}')
     
     num_actions_taken = len(action_history)
     

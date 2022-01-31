@@ -41,7 +41,7 @@ if __name__ == '__main__':
     for p in range(0, number_of_steps):
         action_history[p], reward_history[p] = agent.step()
         
-    print(f'Mean reward={np.mean(reward_history)}')
+    print(f'Mean reward = {np.mean(reward_history)}')
     
     # Plot percentage correct action curves
     percentage_correct_actions = compute_percentage_of_optimal_actions_selected(environment, action_history)

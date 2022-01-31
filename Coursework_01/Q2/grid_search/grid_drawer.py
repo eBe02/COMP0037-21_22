@@ -2,7 +2,7 @@ from .graphics import *
 
 class GridDrawer(object):
 
-    def __init__(self, grid, maximum_grid_drawer_window_height_in_pixels, top_left_in_pixels = None):
+    def __init__(self, grid, maximum_grid_drawer_window_height_in_pixels, top_left_in_pixels=None):
         
         self._grid = grid
         width = grid.width()
@@ -15,7 +15,7 @@ class GridDrawer(object):
         pixel_width =  width * self._cell_size
         pixel_height = height * self._cell_size
         
-        self._win = GraphWin(grid.name(), pixel_width, pixel_height, autoflush = False)
+        self._win = GraphWin(grid.name(), pixel_width, pixel_height, autoflush=False)
         
         # If the x and y coordinates are specified, then set the geometry; this is a bit of a hack
         if top_left_in_pixels is not None:

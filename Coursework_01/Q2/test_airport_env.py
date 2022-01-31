@@ -14,7 +14,7 @@ from airport.actions import ActionType
 # This script illustrates how to use the airport environment
 
 if __name__ == '__main__':
-    airport_map = mini_scenario()    
+    airport_map = mini_scenario()
     airport_environment = AirportBatteryChargingEnvironment(airport_map)
     airport_environment.enable_verbose_graphics(True)
     
@@ -43,7 +43,7 @@ if __name__ == '__main__':
         action = (ActionType.RECHARGE_ROBOT, )
         observation, reward, done, info = airport_environment.step(action)
         total_reward += reward
-    print(f'Average reward from the bandit={total_reward/1000}')
+    print(f'Average reward from the bandit = {total_reward/1000}')
     
     try:
         input("Press enter in the command window to continue.....")

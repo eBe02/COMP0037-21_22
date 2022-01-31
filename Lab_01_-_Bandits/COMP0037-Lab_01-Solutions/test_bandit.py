@@ -41,13 +41,13 @@ if __name__ == '__main__':
     
     # Generate the histogram of the reward plot
     plt.figure()    
-    n, bins, patches = plt.hist(rewards, 50, density=True, facecolor='g', alpha=0.75)
+    n, bins, patches = plt.hist(rewards, 50, density=True, facecolor = 'g', alpha = 0.75)
     plt.xlabel('Rewards')
     plt.ylabel('Probability')
     plt.title('Reward Histogram')
     plt.grid(True)
 
-    print(f'batch mean={np.mean(rewards)}, batch sigma={np.std(rewards)}')
+    print(f'batch mean = {np.mean(rewards)}, batch sigma = {np.std(rewards)}')
 
     # Q1c:
     # Change the way the reward is computed to use the iterative expression
@@ -57,7 +57,7 @@ if __name__ == '__main__':
     for s in range(1, number_of_steps):
         recursive_q = recursive_q + (rewards[s] - recursive_q) / (s + 1)
 
-    print(f'recursive mean={recursive_q}')
+    print(f'recursive mean = {recursive_q}')
     
     # Do not block on the individual plots. Instead, wait for key press
     plt.ion()
