@@ -11,12 +11,13 @@ import numpy as np
 
 from bandits.bandit import Bandit
 from bandits.bandit import BanditEnvironment
-from bandits.epsilon_greed_agent import EpsilonGreedyAgent
+from bandits.epsilon_greedy_agent import EpsilonGreedyAgent
 from bandits.performance_measures import compute_percentage_of_optimal_actions_selected
 from bandits.performance_measures import compute_regret
 
 if __name__ == '__main__':
-       # Create bandit
+
+    # Create bandit
     environment = BanditEnvironment(4)
     
     # Add some bandits
@@ -46,7 +47,7 @@ if __name__ == '__main__':
     # Plot percentage correct action curves
     percentage_correct_actions = compute_percentage_of_optimal_actions_selected(environment, action_history)
     plt.ion()
-    plt.plot(percentage_correct_actions, color = 'red', label = '% optimal actions')
+    plt.plot(percentage_correct_actions, color='red', label='% optimal actions')
     plt.legend()
     plt.xlabel('Sample number')
     plt.ylabel('Percentage optimal action')
@@ -54,7 +55,7 @@ if __name__ == '__main__':
     # Plot the regret curves
     regret = compute_regret(environment, reward_history)
     plt.figure()
-    plt.plot(regret, color = 'red', label = 'Regret')
+    plt.plot(regret, color='red', label='Regret')
     plt.legend()
     plt.xlabel('Sample number')
     plt.ylabel('Regret')

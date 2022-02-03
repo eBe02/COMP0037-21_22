@@ -13,7 +13,7 @@ occupancyGrid = OccupancyGrid(31, 31, 0.5)
 # occupancyGrid.setCell(7, 2, 1)
 
 # Q1a:
-# Set the start and end values to the specifed 
+# Set the start and end values to the specified values
 start = (20, 20)
 goal = (0, 0)
 

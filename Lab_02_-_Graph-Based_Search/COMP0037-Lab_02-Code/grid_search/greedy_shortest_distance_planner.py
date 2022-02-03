@@ -24,6 +24,7 @@ class GreedyShortestDistancePlanner(PlannerBase):
     # Q4a:
     # Simply pull from the front of the list
     def popCellFromQueue(self):
+        raise NotImplementedError()
 
     def resolveDuplicate(self, cell, parentCell):
         # Nothing to do in this case

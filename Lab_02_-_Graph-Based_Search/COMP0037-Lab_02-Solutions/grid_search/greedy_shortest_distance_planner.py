@@ -14,7 +14,7 @@ class GreedyShortestDistancePlanner(PlannerBase):
     # Sort in order of distance from the target and use that
     def pushCellOntoQueue(self, cell):
 
-    #Q4a:
+    # Q4a:
 
         # Distance to the goal
         cellCoords = cell.coords()

@@ -11,7 +11,7 @@ import numpy as np
 
 from bandits.bandit import Bandit
 from bandits.bandit import BanditEnvironment
-from bandits.epsilon_greed_agent import EpsilonGreedyAgent
+from bandits.epsilon_greedy_agent import EpsilonGreedyAgent
 from bandits.performance_measures import compute_percentage_of_optimal_actions_selected
 from bandits.performance_measures import compute_regret
 

@@ -10,7 +10,7 @@ from .helpers import clamp
 class OccupancyGrid(object):
 
     # Construct a new occupancy grid with a given width and
-    # height. The resolution says the lenght of the side of each cell
+    # height. The resolution says the length of the side of each cell
     # in metres. By default, all the cells are set to "0" which means
     # that there are no obstacles.
     def __init__(self, width, height, resolution):
